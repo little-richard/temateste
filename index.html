@@ -1,0 +1,103 @@
+<html>
+    <head>
+        <title>Manipulação Exata</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
+        <link href="css/style_tablet.css" rel="stylesheet" type="text/css" media="screen and (max-width:800px)"/>
+        <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <script type="text/javascript" src="slide/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" src="slide/jquery.cycle.all.js"></script>
+        <link rel="stylesheet" href="css/w3.css" type="text/css">
+        <style>
+            .mySlides {
+                display:none;
+            }
+            .w3-left, .w3-right, .w3-badge {
+                cursor:pointer;
+            }
+            .w3-badge {
+                height:9px;width:9px;padding:0
+            }
+        </style>
+    </head>
+    <body>
+        <header id="logo">
+            <img src="imgs/logo.png"/>
+        </header>
+        <hr align="center" width="100" size="1" color=white>
+        <div class="home">
+            <div class="men">
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li><a href="#artigo1">SOBRE A FARMÁCIA</a></li>
+                    <li><a href="#artigo2">O QUE É MANIPULAÇÃO</a></li>
+                    <li><a href="#artigo3">ENVIE SUA RECEITA</a></li>
+                    <li><a href="#artigo4">CONTATO</a></li>
+                </ul>
+            </nav>
+            <div class="w3-content w3-display-container" style="max-width:1000px">
+                <img class="mySlides" src="slide/atendimento.jpg" style="width:100%">
+                <img class="mySlides" src="slide/banner.jpg" style="width:100%">
+                <img class="mySlides" src="slide/novembro.jpg" style="width:100%">
+                <div class="w3-center w3-section w3-large w3-text-white w3-display-bottommiddle" style="width:100%">
+                    <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
+                    <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
+                    <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span>
+                </div>
+            </div>
+
+            <script>
+                var slideIndex = 1;
+
+                function plusDivs(n) {
+                    showDivs(slideIndex += n);
+                }
+
+                function currentDiv(n) {
+                    showDivs(slideIndex = n);
+                }
+                var myIndex = 0;
+                carousel();
+
+                function showDivs(n) {
+                    var i;
+                    var x = document.getElementsByClassName("mySlides");
+                    var dots = document.getElementsByClassName("demo");
+                    if (n > x.length) {
+                        slideIndex = 1
+                    }
+                    if (n < 1) {
+                        slideIndex = x.length
+                    }
+                    for (i = 0; i < x.length; i++) {
+                        x[i].style.display = "none";
+                    }
+                    for (i = 0; i < dots.length; i++) {
+                        dots[i].className = dots[i].className.replace(" w3-white", "");
+                    }
+                    x[slideIndex - 1].style.display = "block";
+                    dots[slideIndex - 1].className += " w3-white";
+                }
+                function carousel() {
+                    var i;
+                    var x = document.getElementsByClassName("mySlides");
+                    for (i = 0; i < x.length; i++) {
+                        x[i].style.display = "none";
+                    }
+                    myIndex++;
+                    currentDiv(myIndex);
+                    if (myIndex > x.length) {
+                        myIndex = 1
+                    }
+                    x[myIndex - 1].style.display = "block";
+                    setTimeout(carousel, 4000); // Change image every 2 seconds
+                }
+            </script>
+        </div>        
+    </body>
+</html>
